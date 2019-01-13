@@ -15,24 +15,24 @@ def home(request):
                 client = wolframalpha.Client(app_id)
                 res = client.query(query)
                 answer = next(res.results).text
-                print(answer)
+                # print(answer)
                 if answer:
-                    print(answer)
-                    return render(request, 'index.html', {'answer': answer})
+                    # print(answer)
+                    return render(request, 'pydo/search.html', {'answer': answer})
                 else:
-                    print("Not Found!")
+                    # print("Not Found!")
                     answer = query+" Not Found!"
-                    return render(request, 'index.html', {'answer': answer})
+                    return render(request, 'pydo/search.html', {'answer': answer})
             except:
                 # wikipedia
                 wikipedia.set_lang("bn")
                 answer = wikipedia.summary(query)
                 if answer:
-                    print(answer)
-                    return render(request, 'index.html', {'answer': answer})
+                    # print(answer)
+                    return render(request, 'pydo/search.html', {'answer': answer})
                 else:
-                    print("Not Found!")
+                    # print("Not Found!")
                     answer = query+" Not Found!"
-                    return render(request, 'index.html', {'answer': answer})
+                    return render(request, 'pydo/search.html', {'answer': answer})
     else:
-        return render(request, 'index.html')
+        return render(request, 'pydo/search.html')
